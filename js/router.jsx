@@ -1,9 +1,11 @@
 var Backbone = require('./backbone-parse');
 var Post = require('./models/post');
 var Posts = require('./collections/posts');
-var mainTemplate = require('./templates/main.html');
+//var mainTemplate = require('./templates/main.html');
 var detailTemplate = require('./templates/detail.html');
 var addEditTemplate = require('./templates/addEdit.html');
+//var React = require('./react');
+//var Main = require('./')
 
 var Router = Backbone.Router.extend({
   initialize: function () {
@@ -18,9 +20,12 @@ var Router = Backbone.Router.extend({
   index: function () {
     Posts.fetch({
       success: function (posts) {
-        var html = mainTemplate({'data': posts.toJSON()});
-        $("#container").html(html);
+       var data = posts.toJSON();
+          
+          var data = posts.toJSON();
+          ReactDOM.render(<Main />, document.getElementById('container'));
       }
+        Main=(data);
     });
   }
 });
