@@ -1,7 +1,10 @@
 var Backbone = require('./backbone-parse');
 var Post = require('./models/post');
 var Posts = require('./collections/posts');
-var mainTemplate = require('./templates/main.html');
+// var mainTemplate = require('./templates/main.html');
+var React = require('react');
+var ReactDOM = require('react-dom');
+var Main = require('./components/main.jsx');
 var detailTemplate = require('./templates/detail.html');
 var addEditTemplate = require('./templates/addEdit.html');
 
@@ -18,8 +21,10 @@ var Router = Backbone.Router.extend({
   index: function () {
     Posts.fetch({
       success: function (posts) {
-        var html = mainTemplate({'data': posts.toJSON()});
-        $("#container").html(html);
+        // var html = mainTemplate({'data': posts.toJSON()});
+        // $("#container").html(html);
+        var data = posts.toJSON();
+        ReactDOM.render(<Main data={data} />, document.getElementById('container'));
       }
     });
   }
@@ -34,8 +39,7 @@ router.on('route:post', function (objectId) {
 });
 
 router.on('route:add', function () {
-  var html = addEditTemplate({});
-  $("#container").html(html);
+  $("#addEditForm").show();
 });
 
 router.on('route:edit', function (objectId) {
