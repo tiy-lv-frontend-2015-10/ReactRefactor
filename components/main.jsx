@@ -1,5 +1,6 @@
 var React = require('react');
-
+var ReactDOM = require('react-dom');
+var  = require('./components/.jsx')
 //var Main = React.createClass({
 //	render: function() {
 //	return (
@@ -13,11 +14,13 @@ var React = require('react');
 //});
 
 
-<!--<ul id="main">
-  {{#data}}
-  <li><a href="/detail/{{objectId}}"><img src="{{url}}" /></a>
-  {{/data}}
-</ul> -->
+//<ul id="main">
+//  {{#data}}
+//  <li><a href="/detail/{{objectId}}"><img src="{{url}}" /></a>
+ // {{/data}}
+//</ul> -->
+
+
 
 
 var Sub = React.createClass({
@@ -27,3 +30,5 @@ var Sub = React.createClass({
 	);
 	}
 });
+
+ReactDOM.render (<Sub />{}).getElementById('container');

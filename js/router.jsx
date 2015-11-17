@@ -26,17 +26,20 @@ var Router = Backbone.Router.extend({
   }
 });
 
+
+
 var router = new Router();
 
 router.on('route:post', function (objectId) {
   var post = Posts.get(objectId);
   var html = detailTemplate(post.toJSON());
-  $("#container").html(html);
+  ReactDOM.render(<Detail data=post) />, document.getElementById('container');
 });
 
 router.on('route:add', function () {
   var html = addEditTemplate({});
   $("#container").html(html);
+  ReactDOM.render(),.getElementById();
 });
 
 router.on('route:edit', function (objectId) {
@@ -80,3 +83,7 @@ $("body").on('submit', "#detailForm", function (e) {
 });
 
 module.exports = router;
+
+
+
+

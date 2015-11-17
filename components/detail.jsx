@@ -1,10 +1,14 @@
 var React = require('react');
+var ReactDOM = require('reactDOM');
 
 var Detail = React.createClass({
+  _handlechange: function () {
+    this.setstate
+  }
 	render: function () {
 		return (
 			<div class="detail">
-        <img src={this.post.url} />
+        <img src={this.post.url}/>
         <ul>
           <li><strong>Title:</strong> {this.props.title}</li>
           <li><strong>Description:</strong> {this.props.description}</li>
@@ -18,3 +22,5 @@ var Detail = React.createClass({
 
 
 
+module.exports = Detail;
+ReactDOM
