@@ -4,7 +4,7 @@ var Edit = React.createClass({
 	render:function(){
 	<form id="detailForm">
 		<input id="objectId" type="hidden" value={this.props.data.objectId} />
-		<div class="form-group">
+		<div className="form-group">
 		<label for="title">Title</label>
 		<input type="text" class="form-control" id="title" placeholder="Title"{{#title}} value="{{title}}"{{/title}}>
 		</div>
