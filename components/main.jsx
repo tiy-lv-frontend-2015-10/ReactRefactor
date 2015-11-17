@@ -1,6 +1,6 @@
 var React = require('react');
 
-var Sub = React.createClass({
+var Main = React.createClass({
     render: function () {
         return (
         <li><a href={'/detail/' + this.props.objectId}><img src={this.props.url}/></a></li>);
@@ -19,6 +19,8 @@ var Sub = React.createClass({
         );
     }
     });*/
+    
+    module.exports = Main;
     
     
 
