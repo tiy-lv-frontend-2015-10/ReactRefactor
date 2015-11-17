@@ -45,7 +45,7 @@ router.on('route:post', function (objectId) {
 
 router.on('route:edit', function (objectId) {
   var post = Posts.get(objectId).toJSON();
-  ReactDOM.render(<Edit hamburger={post} />, document.getElementById('container'));
+  ReactDOM.render(<Edit item={post} />, document.getElementById('container'));
 });
 
 $('body').on('click', 'a', function (e){
