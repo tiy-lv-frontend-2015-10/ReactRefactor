@@ -18,9 +18,10 @@ var Router = Backbone.Router.extend({
   index: function () {
     Posts.fetch({
       success: function (posts) {
-        var html = mainTemplate({'data': posts.toJSON()});
-        $("#container").html(html);
+        var data = posts.toJSON();
+        ReactDOM.render(<Main />, document.getElementById('container'))
       }
+      Main={data};
     });
   }
 });
