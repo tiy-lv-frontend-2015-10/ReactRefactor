@@ -31,4 +31,4 @@ var Sub = React.createClass({
 	}
 });
 
-ReactDOM.render (<Sub />{}).getElementById('container');
+ReactDOM.render(<Sub />{}).getElementById('container');

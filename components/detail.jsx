@@ -5,6 +5,7 @@ var Detail = React.createClass({
   _handlechange: function () {
     this.setstate
   }
+  
 	render: function () {
 		return (
 			<div class="detail">

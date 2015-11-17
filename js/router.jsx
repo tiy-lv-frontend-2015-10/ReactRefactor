@@ -39,7 +39,6 @@ router.on('route:post', function (objectId) {
 router.on('route:add', function () {
   var html = addEditTemplate({});
   $("#container").html(html);
-  ReactDOM.render(),.getElementById();
 });
 
 router.on('route:edit', function (objectId) {
