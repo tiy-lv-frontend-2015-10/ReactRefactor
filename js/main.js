@@ -9,5 +9,7 @@ require("../css/main.css");
 $(document).ready(function(){
   var Post = require('./models/post');
   var Posts = require('./collections/posts');
-  var Router = require('./router.js');
+  //var Router = require('./router.js');
+  var Router = require('./router.jsx');
 });
+
