@@ -9,6 +9,7 @@ var ReactDOM = require('react-dom');
 var Main = require('./components/main.jsx');
 var Detail = require('./components/detail.jsx');
 var Edit = require('./components/edit.jsx')
+var Add = require('./components/add.jsx')
 
 var Router = Backbone.Router.extend({
   initialize: function () {
@@ -16,7 +17,7 @@ var Router = Backbone.Router.extend({
   },
   routes: {
     "detail/:objectId": "post",
-    // "post/add": "add",
+    "post/add": "add",
     "post/:objectId/edit": "edit",
     "":"index"
   },
@@ -38,10 +39,9 @@ router.on('route:post', function (objectId) {
   ReactDOM.render(<Detail data={post} />, document.getElementById('container'));
 });
 
-// router.on('route:add', function () {
-//   var html = addEditTemplate({});
-//   $("#container").html(html);
-// });
+router.on('route:add', function () {
+ReactDOM.render(<Add />, document.getElementById('container'));
+});
 
 router.on('route:edit', function (objectId) {
   var post = Posts.get(objectId).toJSON();
