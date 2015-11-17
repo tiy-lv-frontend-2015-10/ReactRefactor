@@ -4,8 +4,9 @@ var Posts = require('./collections/posts');
 // var mainTemplate = require('./templates/main.html');
 var React = require('react');
 var ReactDOM = require('react-dom');
+var Detail = require('./components/detail.jsx');
 var Main = require('./components/main.jsx');
-var detailTemplate = require('./templates/detail.html');
+// var detailTemplate = require('./templates/detail.html');
 var addEditTemplate = require('./templates/addEdit.html');
 
 var Router = Backbone.Router.extend({
@@ -34,8 +35,12 @@ var router = new Router();
 
 router.on('route:post', function (objectId) {
   var post = Posts.get(objectId);
-  var html = detailTemplate(post.toJSON());
-  $("#container").html(html);
+  // var html = detailTemplate(post.toJSON());
+  // $("#container").html(html);
+  var test = post.toJSON();
+  console.log(test);
+  ReactDOM.render(<Detail data={test} />, document.getElementById('container'));
+
 });
 
 router.on('route:add', function () {
@@ -44,8 +49,9 @@ router.on('route:add', function () {
 
 router.on('route:edit', function (objectId) {
   var post = Posts.get(objectId);
-  var html = addEditTemplate(post.toJSON());
-  $("#container").html(html);
+ 
+  // var html = addEditTemplate(post.toJSON());
+  // $("#container").html(html);
 });
 
 $('body').on('click', 'a', function (e){

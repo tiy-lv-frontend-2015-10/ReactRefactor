@@ -2,17 +2,34 @@ var React = require('react');
 
 var Detail = React.createClass({
 	render:function() {
-		return(
-		<div class="detail">
-  		<img src="{{url}}" />
-  		<ul>
-		    <li><strong>Title:</strong> {{title}}</li>
-		    <li><strong>Description:</strong> {{description}}</li>
-		    <li><a href="/post/{{objectId}}/edit">Edit</a></li>
-		  </ul>
-		</div>
+		
+			
+		
+			return( 
+				{this.props.data.map(function(test){
+
+					return (
+					<div className="detail">
+					<img src={test.url} />
+
+  					<ul>
+			    		<li><strong>Title:</strong>{test.title}</li>
+			    		<li><strong>Description:</strong>{test.description}</li>
+			    		<li><a href={'/detail/'+test.objectId}>Edit</a></li>
+		  			</ul>
+		  			</div>
+		  			)
+		  		)
+				
+				}
+				
+			})};
+		
 
 
-		)
-	}
-})
+	
+});
+
+module.exports = Detail;
+
+
