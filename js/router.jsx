@@ -1,9 +1,14 @@
 var Backbone = require('./backbone-parse');
 var Post = require('./models/post');
 var Posts = require('./collections/posts');
-var mainTemplate = require('./templates/main.html');
-var detailTemplate = require('./templates/detail.html');
-var addEditTemplate = require('./templates/addEdit.html');
+//var mainTemplate = require('./templates/main.html');
+//var detailTemplate = require('./templates/detail.html');
+//var addEditTemplate = require('./templates/addEdit.html');
+var React = require('react');
+var ReactDOM = require('react-dom');
+var Main = require('./components/main.jsx');
+var Detail = require('./components/detail.jsx');
+
 
 var Router = Backbone.Router.extend({
   initialize: function () {
@@ -18,8 +23,10 @@ var Router = Backbone.Router.extend({
   index: function () {
     Posts.fetch({
       success: function (posts) {
-        var html = mainTemplate({'data': posts.toJSON()});
-        $("#container").html(html);
+        //var html = mainTemplate({'data': posts.toJSON()});
+        //$("#container").html(html);
+        var data = posts.toJSON();
+        ReactDOM.render(<Main data={data} />, document.getElementById('container'));
       }
     });
   }
@@ -28,20 +35,20 @@ var Router = Backbone.Router.extend({
 var router = new Router();
 
 router.on('route:post', function (objectId) {
-  var post = Posts.get(objectId);
-  var html = detailTemplate(post.toJSON());
-  $("#container").html(html);
+  var post = Posts.get(objectId).toJSON();
+  console.log(post);
+  ReactDOM.render(<Detail data={post} /> ,document.getElementById('container'));
 });
 
 router.on('route:add', function () {
-  var html = addEditTemplate({});
-  $("#container").html(html);
+  //var html = addEditTemplate({});
+  //$("#container").html(html);
 });
 
 router.on('route:edit', function (objectId) {
-  var post = Posts.get(objectId);
-  var html = addEditTemplate(post.toJSON());
-  $("#container").html(html);
+  //var post = Posts.get(objectId);
+  //var html = addEditTemplate(post.toJSON());
+  //$("#container").html(html);
 });
 
 $('body').on('click', 'a', function (e){
