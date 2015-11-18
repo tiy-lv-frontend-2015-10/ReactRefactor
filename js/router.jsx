@@ -6,8 +6,10 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var Detail = require('./components/detail.jsx');
 var Main = require('./components/main.jsx');
+var Edit = require('./components/addEdit.jsx');
+var Nav = require('./components/nav.jsx');
 // var detailTemplate = require('./templates/detail.html');
-var addEditTemplate = require('./templates/addEdit.html');
+// var addEditTemplate = require('./templates/addEdit.html');
 
 var Router = Backbone.Router.extend({
   initialize: function () {
@@ -20,12 +22,14 @@ var Router = Backbone.Router.extend({
     "":"index"
   },
   index: function () {
+    ReactDOM.render(<Nav router={this}/>, document.getElementById('nav'));
     Posts.fetch({
       success: function (posts) {
         // var html = mainTemplate({'data': posts.toJSON()});
         // $("#container").html(html);
         var data = posts.toJSON();
-        ReactDOM.render(<Main data={data} />, document.getElementById('container'));
+
+        ReactDOM.render(<Main data={data} router={this}/>, document.getElementById('container'));
       }
     });
   }
@@ -39,19 +43,23 @@ router.on('route:post', function (objectId) {
   // $("#container").html(html);
   var test = post.toJSON();
   console.log(test);
-  ReactDOM.render(<Detail data={test} />, document.getElementById('container'));
+  ReactDOM.render(<Detail router={this}/>, document.getElementById('container'));
 
 });
 
+
 router.on('route:add', function () {
-  $("#addEditForm").show();
+ 
+  ReactDOM.render(<Edit/>, document.getElementById('container'));
 });
 
 router.on('route:edit', function (objectId) {
   var post = Posts.get(objectId);
  
-  // var html = addEditTemplate(post.toJSON());
-  // $("#container").html(html);
+  var edit = post.toJSON();
+  console.log(edit);
+  ReactDOM.render(<Edit data={edit}/>, document.getElementById('container'));
+
 });
 
 $('body').on('click', 'a', function (e){
@@ -60,10 +68,10 @@ $('body').on('click', 'a', function (e){
   router.navigate(href, {trigger:true});
 });
 
-$('#addBtn').on('click', function (e) {
-  e.preventDefault();
-  router.navigate('post/add', {trigger:true});
-});
+// $('#addBtn').on('click', function (e) {
+//   e.preventDefault();
+//   router.navigate('post/add', {trigger:true});
+// });
 
 
 $("body").on('submit', "#detailForm", function (e) {
