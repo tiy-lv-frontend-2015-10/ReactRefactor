@@ -8,6 +8,8 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var Main = require('./components/main.jsx');
 var Detail = require('./components/detail.jsx');
+var AddEdit = require('./components/addEdit.jsx');
+var Nav = require('./components/nav.jsx');
 
 
 var Router = Backbone.Router.extend({
@@ -21,10 +23,9 @@ var Router = Backbone.Router.extend({
     "":"index"
   },
   index: function () {
+    ReactDOM.render(<Nav router={this}/>, document.getElementById('nav'));
     Posts.fetch({
       success: function (posts) {
-        //var html = mainTemplate({'data': posts.toJSON()});
-        //$("#container").html(html);
         var data = posts.toJSON();
         ReactDOM.render(<Main data={data} />, document.getElementById('container'));
       }
@@ -35,20 +36,24 @@ var Router = Backbone.Router.extend({
 var router = new Router();
 
 router.on('route:post', function (objectId) {
-  var post = Posts.get(objectId).toJSON();
-  console.log(post);
-  ReactDOM.render(<Detail data={post} /> ,document.getElementById('container'));
+  var post = Posts.get(objectId);
+  var data = post.toJSON();
+  ReactDOM.render(<Detail data={data} />, document.getElementById('container'));
 });
 
 router.on('route:add', function () {
   //var html = addEditTemplate({});
   //$("#container").html(html);
+  // var data = post.toJSON();
+  ReactDOM.render(<AddEdit />, document.getElementById('container'));
 });
 
 router.on('route:edit', function (objectId) {
-  //var post = Posts.get(objectId);
+  var post = Posts.get(objectId);
   //var html = addEditTemplate(post.toJSON());
   //$("#container").html(html);
+  var data = post.toJSON();
+  ReactDOM.render(<AddEdit data={data} post={post} />, document.getElementById('container'));
 });
 
 $('body').on('click', 'a', function (e){
@@ -63,7 +68,7 @@ $('#addBtn').on('click', function (e) {
 });
 
 
-$("body").on('submit', "#detailForm", function (e) {
+/*$("body").on('submit', "#detailForm", function (e) {
   e.preventDefault();
   var post = new Post();
   if ($("#objectId").length) {
@@ -83,6 +88,6 @@ $("body").on('submit', "#detailForm", function (e) {
       router.navigate("/", {trigger: true});
     }
   })
-});
+});*/
 
 module.exports = router;
