@@ -34,7 +34,7 @@ function generateItem(howMany) {
   
  
   // new hotness
-  /*
+  /**
   var Item = new Post({
     title: faker.lorem.words().reduce(function(word1, word2){
       var words = word1.charAt(0).toUpperCase() + word1.slice(1) +
