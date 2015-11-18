@@ -9,6 +9,7 @@ var ReactDOM = require('react-dom');
 var Main = require('./components/main.jsx');
 var Detail = require('./components/detail.jsx');
 var Edit = require('./components/edit.jsx');
+var Nav = require('./components/nav.jsx');
 
 var Router = Backbone.Router.extend({
   initialize: function () {
@@ -21,6 +22,7 @@ var Router = Backbone.Router.extend({
     "":"index"
   },
   index: function () {
+    ReactDOM.render(<Nav router={this}/>, document.getElementById('nav'));
     Posts.fetch({
       success: function (posts) {
         // var html = mainTemplate({'data': posts.toJSON()});
@@ -38,18 +40,20 @@ router.on('route:post', function (objectId) {
   var post = Posts.get(objectId).toJSON();
   //var html = detailTemplate(post.toJSON());
   //$("#container").html(html);
-  ReactDOM.render(<Detail data={post} />, document.getElementById('container'));
+  ReactDOM.render(<Detail data={post}/>, document.getElementById('container'));
 });
 
 router.on('route:add', function () {
-  var html = addEditTemplate({});
-  $("#container").html(html);
+  // var html = addEditTemplate({});
+  // $("#container").html(html);
+  ReactDOM.render(<Edit />, document.getElementById('container'));
 });
 
 router.on('route:edit', function (objectId) {
-  var post = Posts.get(objectId);
-  var html = addEditTemplate(post.toJSON());
-  $("#container").html(html);
+  var post = Posts.get(objectId).toJSON();
+  // var html = addEditTemplate(post.toJSON());
+  // $("#container").html(html);
+  ReactDOM.render(<Edit data={post} />, document.getElementById('container'));
 });
 
 $('body').on('click', 'a', function (e){
@@ -58,10 +62,10 @@ $('body').on('click', 'a', function (e){
   router.navigate(href, {trigger:true});
 });
 
-$('#addBtn').on('click', function (e) {
-  e.preventDefault();
-  router.navigate('post/add', {trigger:true});
-});
+// $('#addBtn').on('click', function (e) {
+//   e.preventDefault();
+//   router.navigate('post/add', {trigger:true});
+// });
 
 
 $("body").on('submit', "#detailForm", function (e) {

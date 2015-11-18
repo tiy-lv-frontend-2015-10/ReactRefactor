@@ -15,4 +15,4 @@ var Detail = React.createClass({
 	}
 });
 
-module.exports =Detail;
+module.exports=Detail;
