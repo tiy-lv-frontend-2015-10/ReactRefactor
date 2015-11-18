@@ -1,9 +1,16 @@
 var Backbone = require('./backbone-parse');
 var Post = require('./models/post');
 var Posts = require('./collections/posts');
-var mainTemplate = require('./templates/main.html');
-var detailTemplate = require('./templates/detail.html');
-var addEditTemplate = require('./templates/addEdit.html');
+var React = require('react');
+var ReactDOM = require('react-dom');
+var Main = require('./components/Main.jsx');
+var Detail = require('./components/Detail.jsx');
+var AddEdit = require('./components/AddEdit.jsx');
+
+// var images = [
+//   this.props.data.url
+//   ]
+
 
 var Router = Backbone.Router.extend({
   initialize: function () {
@@ -18,31 +25,28 @@ var Router = Backbone.Router.extend({
   index: function () {
     Posts.fetch({
       success: function (posts) {
-        var html = mainTemplate({'data': posts.toJSON()});
-        $("#container").html(html);
+        var data = posts.toJSON();
+        ReactDOM.render(<Main data={data}/>, document.getElementById("container"));
       }
     });
   }
 });
-
 var router = new Router();
-
 router.on('route:post', function (objectId) {
-  var post = Posts.get(objectId);
-  var html = detailTemplate(post.toJSON());
-  $("#container").html(html);
+  var post = Posts.get(objectId).toJSON();
+  ReactDOM.render(<Detail data={post} />, document.getElementById('container'));
 });
 
 router.on('route:add', function () {
-  var html = addEditTemplate({});
-  $("#container").html(html);
+  ReactDOM.render(<AddEdit />, document.getElementById('container'));
 });
 
 router.on('route:edit', function (objectId) {
-  var post = Posts.get(objectId);
-  var html = addEditTemplate(post.toJSON());
-  $("#container").html(html);
+  var post = Posts.get(objectId).toJSON();
+  ReactDOM.render(<AddEdit data={data} router={router} />, document.getElementById('container'));
 });
+
+
 
 $('body').on('click', 'a', function (e){
   e.preventDefault();
@@ -54,7 +58,6 @@ $('#addBtn').on('click', function (e) {
   e.preventDefault();
   router.navigate('post/add', {trigger:true});
 });
-
 
 $("body").on('submit', "#detailForm", function (e) {
   e.preventDefault();
@@ -77,5 +80,4 @@ $("body").on('submit', "#detailForm", function (e) {
     }
   })
 });
-
 module.exports = router;
