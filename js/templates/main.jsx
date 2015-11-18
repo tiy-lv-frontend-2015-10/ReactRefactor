@@ -5,7 +5,6 @@ var Main = React.createClass({
     render: function() {
         return (
             <ul id="main">
-
               {this.props.photos.map(function(photo){
                 return (
                     <li>
@@ -14,11 +13,16 @@ var Main = React.createClass({
                         </a>
                     </li>
                 )
-              })}
-                
+              })}      
             </ul>
         )
     }
 })
 
 module.exports = Main;
+
+/*  --this is the mustache I am changing in to React---
+{{#data}}
+  <li><a href="/detail/{{objectId}}"><img src="{{url}}" /></a>
+{{/data}}
+</ul>*/  

@@ -3,22 +3,31 @@ var ReactDOM = require('react-dom');
 
 var AddEdit = React.createClass({
     render: function() {
+        var post = this.props.post || {};
         return (
-            <div class="detail">
-                <img src={this.props.url} />
-                <ul>
-                    <li><strong>Title:</strong> {this.props.title}</li>
-                    <li><strong>Description:</strong> {this.props.description}</li>
-                    <li><a href={"/post/" + this.props.objectId + "/edit"}>Edit</a></li>
-                </ul>                
+            <form id="detailForm">
+            <input id="objectId" type="hidden" defaultValue={post.objectid}/>
+            <div className="form-group">
+              <label htmlFor="title">Title</label>
+              <input type="text" className="form-control" id="title" placeholder="Title" defaultValue={post.title} />
             </div>
+            <div className="form-group">
+              <label htmlFor="url">Image URL</label>
+              <input type="text" className="form-control" id="url" placeholder="Image URL" defaultValue={post.url} />
+            </div>
+            <div className="form-group">
+              <label htmlFor="description">Description</label>
+              <textarea id="description" className="form-control" rows="3" placeholder="Description" defaultValue={post.description}></textarea>
+            </div>
+            <button className="btn btn-default" type="submit">Submit</button>
+          </form>
         )
     }
 })
 
 module.exports = AddEdit;
 
-
+/*
 <form id="detailForm">
   {{#objectId}}
   <input id="objectId" type="hidden" value="{{objectId}}" />
@@ -37,3 +46,4 @@ module.exports = AddEdit;
   </div>
   <button class="btn btn-default" type="submit">Submit</button>
 </form>
+*/
