@@ -3,9 +3,9 @@ var Post = require('./models/post');
 var Posts = require('./collections/posts');
 var React = require('react');
 var ReactDOM = require('react-dom');
-var Main = require('./components/main.jsx');
-var Detail = require('./components/detail.jsx');
-var addEdit = require('./components/addEdit.jsx');
+var Main = require('./components/Main.jsx');
+var Detail = require('./components/Detail.jsx');
+var AddEdit = require('./components/AddEdit.jsx');
 
 var Router = Backbone.Router.extend({
   initialize: function () {
@@ -29,19 +29,19 @@ var Router = Backbone.Router.extend({
 var router = new Router();
 router.on('route:post', function (objectId) {
   var post = Posts.get(objectId).toJSON();
-  ReactDOM.render(<Detail data={post} /> ,document.getElementById('container'));
+  ReactDOM.render(<Detail data={post} />, document.getElementById('container'));
 });
 
 router.on('route:add', function () {
-  var html = addEditTemplate({});
-  $("#container").html(html);
+  ReactDOM.render(<AddEdit />, document.getElementById('container'));
 });
 
 router.on('route:edit', function (objectId) {
-  var post = Posts.get(objectId);
-  var html = addEditTemplate(post.toJSON());
-  $("#container").html(html);
+  var post = Posts.get(objectId).toJSON();
+  ReactDOM.render(<AddEdit data={data} router={router} />, document.getElementById('container'));
 });
+
+
 
 $('body').on('click', 'a', function (e){
   e.preventDefault();

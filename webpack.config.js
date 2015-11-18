@@ -14,7 +14,6 @@ module.exports = {
   ],
   module: {
     loaders: [
-      {test:/\.html$/, loader:'mustache'},
       {test: /\.css$/, loader:'style!css'},
       {test: /\.json$/, loader:'json'},
       { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file" },

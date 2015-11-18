@@ -3,4 +3,4 @@ ul {list-style:none;}
 #main li {float:left; margin:20px;}
 #main img {width:100px;}
 
-.detail img {float:left; margin-right:30px;}
+.detail img {float:left; margin-right:30px; width: 300px; height: 300px;}
