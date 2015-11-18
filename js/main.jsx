@@ -1,4 +1,4 @@
-require("../css/normalize.css");
+/*require("../css/normalize.css");
 require("bootstrap/dist/css/bootstrap.min.css");
 require("../css/main.css");
 
@@ -12,5 +12,5 @@ $(document).ready(function(){
   var React = require('react');
 
 
-});
+});*/
 

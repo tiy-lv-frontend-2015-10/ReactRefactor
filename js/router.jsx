@@ -19,9 +19,8 @@ var Router = Backbone.Router.extend({
     Posts.fetch({
       success: function (posts) {
         var data = posts.toJSON();
-        ReactDOM.render(<Main />, document.getElementById('container'))
+        ReactDOM.render(<Main dataForm={post} />, document.getElementById('container'))
       }
-      Main={data};
     });
   }
 });
@@ -33,10 +32,26 @@ var router = new Router();
 router.on('route:post', function (objectId) {
   var post = Posts.get(objectId);
   var html = detailTemplate(post.toJSON());
-  ReactDOM.render(<Detail data=post) />, document.getElementById('container');
+  ReactDOM.render(<Detail data={post}) />, document.getElementById('container');
 });
 
-router.on('route:add', function () {
+_handleChange: function (e){
+  var buttons = this.props.food;{
+
+  } else {
+
+  }
+  render: function(){
+    console.log("render");
+    return (
+        
+    )
+  }
+
+}
+
+
+/*router.on('route:add', function () {
   var html = addEditTemplate({});
   $("#container").html(html);
 });
@@ -79,7 +94,7 @@ $("body").on('submit', "#detailForm", function (e) {
       router.navigate("/", {trigger: true});
     }
   })
-});
+});*/
 
 module.exports = router;
 

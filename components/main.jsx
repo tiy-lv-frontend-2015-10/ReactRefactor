@@ -1,6 +1,6 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-var  = require('./components/.jsx')
+/*require('./components/.jsx')*/
 //var Main = React.createClass({
 //	render: function() {
 //	return (

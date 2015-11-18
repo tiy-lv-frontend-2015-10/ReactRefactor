@@ -4,9 +4,6 @@ var React = require('react');
 var detailForm = React.createClass({
   getInitialState: function () {
     <input id={this.props.objectId} />
-
-
-
   },
   render: function () {
 
