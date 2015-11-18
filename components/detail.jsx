@@ -16,12 +16,3 @@ var Detail = React.createClass({
 });
 
 module.exports = Detail;
-
-/*<div class="detail">
-  <img src="{{url}}" />
-  <ul>
-    <li><strong>Title:</strong> {{title}}</li>
-    <li><strong>Description:</strong> {{description}}</li>
-    <li><a href="/post/{{objectId}}/edit">Edit</a></li>
-  </ul>
-</div>*/

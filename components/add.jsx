@@ -20,7 +20,7 @@ var Add = React.createClass({
     return (
       <form id="detailForm">
 
-        //<input id="objectId" type="hidden" value="{{objectId}}" />
+        //<input id="objectId" type="hidden" value={this.state.objectId} />
 
         <div class="form-group">
           <label htmlFor="title">Title</label>

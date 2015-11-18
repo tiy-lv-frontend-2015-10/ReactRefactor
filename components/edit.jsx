@@ -12,10 +12,10 @@ var Edit = React.createClass({
   getDefaultProps: function() {
     return {
       data: {
-        objectId: "",
-        url: "",
-        title: "",
-        description: ""
+        objectId: "CSevJJvMKa",
+        url: "https://randomuser.me/api/portraits/women/32.jpg",
+        title: "emy morin",
+        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente excepturi itaque perspiciatis, ullam expedita, consequuntur quis alias dolorum optio tempora dignissimos sit ipsam odio, voluptatum velit doloremque voluptates vitae iste."
       }
     }
   },
@@ -48,22 +48,3 @@ var Edit = React.createClass({
 
 
 module.exports = Edit;
-
-/*<form id="detailForm">
-  {{#objectId}}
-  <input id="objectId" type="hidden" value="{{objectId}}" />
-  {{/objectId}}
-  <div class="form-group">
-    <label for="title">Title</label>
-    <input type="text" class="form-control" id="title" placeholder="Title"{{#title}} value="{{title}}"{{/title}}>
-  </div>
-  <div class="form-group">
-    <label for="url">Image URL</label>
-    <input type="text" class="form-control" id="url" placeholder="Image URL"{{#url}} value="{{url}}"{{/url}}>
-  </div>
-  <div class="form-group">
-    <label for="description">Description</label>
-    <textarea id="description" class="form-control" rows="3" placeholder="Description">{{#description}}{{description}}{{/description}}</textarea>
-  </div>
-  <button class="btn btn-default" type="submit">Submit</button>
-</form>*/
