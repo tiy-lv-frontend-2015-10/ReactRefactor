@@ -22,7 +22,7 @@ var Router = Backbone.Router.extend({
     "":"index"
   },
   index: function() {
-    ReactDOM.render(<Nav router={this}/>, document.getElementById('nav'));
+    ReactDOM.render(<Main router={this}/>, document.getElementById('nav'));
     Posts.fetch({
       success: function (posts) {
           var data = posts.toJSON();
