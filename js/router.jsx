@@ -3,15 +3,13 @@ var Post = require('./models/post');
 var Posts = require('./collections/posts');
 //var mainTemplate = require('./templates/main.html');
 //var detailTemplate = require('./templates/detail.html');
-//var addEditTemplate = require('./templates/addEdit.html');
+//var EditTemplate = require('./templates/Edit.html');
 var React = require('react');
 var ReactDOM = require('react-dom');
 var Main = require('./components/main.jsx');
-var ReactDOM = require('react-dom');
 var Detail = require('./components/detail.jsx');
-var ReactDOM = require('react-dom');
 var Edit = require('./components/edit.jsx');
-
+var Add = require('./components/add.jsx');
 
 var Router = Backbone.Router.extend({
   initialize: function () {
@@ -23,38 +21,34 @@ var Router = Backbone.Router.extend({
     "post/:objectId/edit": "edit",
     "":"index"
   },
-  index: function () {
+  index: function() {
     Posts.fetch({
       success: function (posts) {
-      //var html = mainTemplate({'data': posts.toJSON()});
-      //$("#container").html(html);
           var data = posts.toJSON();
-          ReactDOM.render(<Main />, document.getElementById('container'));
+          ReactDOM.render(<Main data={data} />, document.getElementById('container'));
       }
-      Main=(data);
-    });
+    })
   }
 });
 
 var router = new Router();
 
-router.on('route:post', function (objectId) {
-  var post = Posts.get(objectId);
-  var html = detailTemplate(post.toJSON());
-  //$("#container").html(html);
-  ReactDOM.render(<Detail />, document.getElementById('container'));
+router.on('route:post', function(objectId) {
+  var post = Posts.get(objectId).toJSON;
+  ReactDOM.render(<Detail data={post} />, document.getElementById('container'));
 });
 
-router.on('route:add', function () {
-ReactDOM.render(<addEditForm />, document.getElementById('container'));
+router.on('route:add', function() {
+ReactDOM.render(<Add />, document.getElementById('container'));
 //var html = addEditTemplate({});
   //$("#container").html(html);
 });
 
-router.on('route:edit', function (objectId) {
-  var post = Posts.get(objectId);
+router.on('route:edit', function(objectId) {
+  var post = Posts.get(objectId).toJSON();
   //var html = addEditTemplate(post.toJSON());
   //$("#container").html(html);
+  ReactDOM.render(<Edit data={post} />, document.getElementById('container'));
 });
 
 $('body').on('click', 'a', function (e){
