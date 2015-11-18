@@ -1,6 +1,12 @@
 var React = require('react');
 
 var Nav = React.createClass({
+
+  _click: function(e) {
+    e.preventDefault();
+    this.props.router.navigate('post/add', {trigger:true});
+  },
+
   render: function() {
     return (
       <nav className="navbar navbar-inverse">
@@ -11,7 +17,7 @@ var Nav = React.createClass({
             </a>
           </div>
             <ul className="nav navbar-nav">
-              <li><button id="addBtn" className="btn btn-default navbar-btn" href="/add">Add</button></li>
+              <li><button id="addBtn" onClick={this._click} className="btn btn-default navbar-btn" href="/add">Add</button></li>
             </ul>
         </div>
       </nav>
