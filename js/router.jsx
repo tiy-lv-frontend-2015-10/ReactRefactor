@@ -1,12 +1,12 @@
 var Backbone = require('./backbone-parse');
 var Post = require('./models/post');
 var Posts = require('./collections/posts');
-
 var React = require('react');
 var ReactDOM = require('react-dom');
 var Main = require('./components/main.jsx');
 var Detail = require('./components/detail.jsx');
 var AddEdit= require('./components/edit.jsx');
+var Nav = require('./components/nav.jsx');
 var Router = Backbone.Router.extend({
   initialize: function () {
     Backbone.history.start({pushState: true});
@@ -18,6 +18,7 @@ var Router = Backbone.Router.extend({
     "":"index"
   },
   index: function () {
+    ReactDOM.render(<Nav />, document.getElementById("nav"));
     Posts.fetch({
       success: function (posts) {
 
