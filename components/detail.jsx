@@ -1,7 +1,7 @@
 var React = require('react');
 
 var Detail = React.createClass({
-    render: function (){
+    render: function() {
         return (
       <div className="detail">
         <img src={this.props.data.url} />

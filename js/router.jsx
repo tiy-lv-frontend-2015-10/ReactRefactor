@@ -22,6 +22,7 @@ var Router = Backbone.Router.extend({
     "":"index"
   },
   index: function() {
+    ReactDOM.render(<Nav router={this}/>, document.getElementById('nav'));
     Posts.fetch({
       success: function (posts) {
           var data = posts.toJSON();
@@ -57,10 +58,10 @@ $('body').on('click', 'a', function (e){
   router.navigate(href, {trigger:true});
 });
 
-$('#addBtn').on('click', function (e) {
-  e.preventDefault();
-  router.navigate('post/add', {trigger:true});
-});
+//$('#addBtn').on('click', function (e) {
+  //e.preventDefault();
+  //router.navigate('post/add', {trigger:true});
+//});
 
 
 $("body").on('submit', "#detailForm", function (e) {
