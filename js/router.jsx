@@ -7,6 +7,11 @@ var Main = require('./components/Main.jsx');
 var Detail = require('./components/Detail.jsx');
 var AddEdit = require('./components/AddEdit.jsx');
 
+// var images = [
+//   this.props.data.url
+//   ]
+
+
 var Router = Backbone.Router.extend({
   initialize: function () {
     Backbone.history.start({pushState: true});

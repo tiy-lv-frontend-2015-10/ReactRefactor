@@ -1,6 +1,7 @@
 var React = require("react");
 
 var Main = React.createClass({
+  // getInitialState:function()
   // _handleClick: function(e){
   //   this.setState({
   //     img: e.target.value,
